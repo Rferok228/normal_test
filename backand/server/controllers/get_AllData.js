@@ -1,11 +1,18 @@
 const get = require('../../DataBase/get_all')
 
 const getData = async (req, res) => {
-    const data = await get()
+    try{
+        const data = await get()
 
-    console.log(1)
+        res.json(data)
+    }catch(err){
+        res.json({
+            code: 500, 
+            info: 'db query failed',
+            cathMassage: err
+        }) 
+    }
 
-    res.json(data)
 }
 
 module.exports = getData

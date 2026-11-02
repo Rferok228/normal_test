@@ -30,24 +30,12 @@ const get_pacientsWithParam = async (parametrs) => {
         strok = 'WHERE '
         strok += where.join(' AND ')
     }
-    
 
     const sql = `SELECT * FROM pacienty ${strok}`
+    const responseDB = await db.execute(sql, array_values)
+    
+    return responseDB[0]
 
-    console.log(sql)
-    console.log(array_values)
-
-    try {
-        const responseDB = await db.execute(sql, array_values)
-        
-        return responseDB[0]
-    }catch(err){
-        return {
-            code: 501, 
-            info: 'db query failed',
-            cathMassage: err
-        }
-    }
 }
 
 module.exports = get_pacientsWithParam
