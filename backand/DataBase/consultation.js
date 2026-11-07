@@ -7,4 +7,15 @@ const insert_consultation = async (id, params) => {
     return response[0]
 }
 
-module.exports = insert_consultation
+const get_consultation = async (id) => {
+    const sql = `SELECT c.doctor_id, c.scheduled_at, c.status, c.consultation_notes FROM consultations as c
+        WHERE c.patient_id = ?`
+    const response = await db.execute(sql, [id])
+
+    return response[0]
+}
+
+module.exports = {
+    insert_consultation,
+    get_consultation
+}

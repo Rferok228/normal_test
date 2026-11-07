@@ -1,13 +1,14 @@
 const get_medCardById = require('../../DataBase/get_medCard')
 
 const get_dataMedCard = async (req, res) => {
-    const { id } = req.query
+    const id = req.params.id
 
     if(!id){
-        res.json({
-            code: 400, 
+        res.status(400).json({ 
             info: 'Вы не ввели айди или значение не коректно!',
         })
+        
+        return
     }
 
     try{
@@ -15,11 +16,10 @@ const get_dataMedCard = async (req, res) => {
 
         res.json(data)
     }catch(err){
-        res.json({
-            code: 500, 
+        res.status(500).json({
             info: 'db query failed',
             cathMassage: err
-        }) 
+        })
     }
 }
 

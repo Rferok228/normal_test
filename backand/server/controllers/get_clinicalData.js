@@ -1,4 +1,4 @@
-const get = require('../../DataBase/get_all')
+const get = require('../../DataBase/get_clinicalDataAll')
 
 const getData = async (req, res) => {
     try{
@@ -6,8 +6,7 @@ const getData = async (req, res) => {
 
         res.json(data)
     }catch(err){
-        res.json({
-            code: 500, 
+        res.status(500).json({ 
             info: 'db query failed',
             cathMassage: err
         }) 
