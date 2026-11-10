@@ -1,4 +1,4 @@
-const get_user = require('../../DataBase/get_user')
+const { get_user } = require('../../DataBase/users')
 const create_token = require('../services/JWTTocen')
 
 const login = async (req, res) => {

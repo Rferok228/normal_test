@@ -13,4 +13,14 @@ const get_user = async (login, password) => {
     return [pac_user[0], doc_user[0]]
 }
 
+const insert_patient = async (params) => {
+    const sql = "INSERT INTO pacienty(first_name, last_name, login, password_hash, phone, passport, snils, weight_kg, height_cm, birth_date, blood_group, rhesus_factor) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"
+
+    const response = await db.execute(sql, params)
+}
+
+const insert_doctor = async (params) => {
+    
+}
+
 module.exports = get_user
